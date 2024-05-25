@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+<h2> Dashboard </h2>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a href="{% url "create_book" %}" class="btn btn-primary me-md-2" type="button">Add a Book</a>
+  </div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.description}}</td>
+            <td>
+                <button type="button" class="btn btn-primary">View</button>
+                <button type="button" class="btn btn-danger">Delect</button>
+            </td>
+          </tr>
+        {% endfor %}
+        
+      </tbody>
+</table>
+{% endblock content %}
